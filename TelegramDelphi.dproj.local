@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2021/07/14 23:27:18.411,Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\TelegramDelphi.dproj=Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\HeaderFooterApplication.dproj</Transaction>
+    <Transaction>2021/07/14 23:27:30.620,Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\TelegramMain.pas=Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\HeaderFooterTemplate.pas</Transaction>
+    <Transaction>2021/07/14 23:27:30.620,Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\TelegramMain.fmx=Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\HeaderFooterTemplate.fmx</Transaction>
+  </Transactions>
+</BorlandProject>

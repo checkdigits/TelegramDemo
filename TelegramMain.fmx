@@ -1,0 +1,153 @@
+object HeaderFooterForm: THeaderFooterForm
+  Left = 0
+  Top = 0
+  Caption = 'Header Footer Form'
+  ClientHeight = 567
+  ClientWidth = 384
+  FormFactor.Width = 1440
+  FormFactor.Height = 900
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Header: TToolBar
+    Size.Width = 384.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object HeaderLabel: TLabel
+      Align = Contents
+      Size.Width = 384.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'toollabel'
+      TextSettings.HorzAlign = Center
+      Text = 'Telegram Delphi Client'
+    end
+  end
+  object Footer: TToolBar
+    Align = Bottom
+    Position.Y = 519.000000000000000000
+    Size.Width = 384.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'bottomtoolbar'
+    TabOrder = 1
+  end
+  object TabControl1: TTabControl
+    Align = Client
+    Size.Width = 384.000000000000000000
+    Size.Height = 471.000000000000000000
+    Size.PlatformDefault = False
+    TabIndex = 0
+    TabOrder = 2
+    TabPosition = None
+    Sizes = (
+      384s
+      471s
+      384s
+      471s)
+    object TabItemContacts: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 8.000000000000000000
+      Size.Height = 8.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'TabItemContacts'
+      object lblHeaderContact: TLabel
+        Align = Top
+        Size.Width = 384.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Your Telegram contacts'
+        TabOrder = 0
+      end
+      object ListViewContacts: TListView
+        ItemAppearanceClassName = 'TCustomizeItemObjects'
+        ItemEditAppearanceClassName = 'TCustomizeItemObjects'
+        HeaderAppearanceClassName = 'TListHeaderObjects'
+        FooterAppearanceClassName = 'TListHeaderObjects'
+        Align = Client
+        Size.Width = 384.000000000000000000
+        Size.Height = 446.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        ItemAppearanceObjects.ItemObjects.Text.Width = 255.000000000000000000
+        ItemAppearanceObjects.ItemObjects.Text.Height = 44.000000000000000000
+        ItemAppearanceObjects.ItemObjects.Text.PlaceOffset.X = 46.000000000000000000
+        ItemAppearanceObjects.ItemObjects.Image.Visible = True
+        ItemAppearanceObjects.ItemObjects.Image.PlaceOffset.X = 8.000000000000000000
+        StyleLookup = 'ListViewContactsStyle1'
+        object RoundRect1: TRoundRect
+          Position.X = 296.000000000000000000
+          Position.Y = 368.000000000000000000
+          Size.Width = 57.000000000000000000
+          Size.Height = 58.000000000000000000
+          Size.PlatformDefault = False
+        end
+      end
+    end
+    object TabItem2: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 8.000000000000000000
+      Size.Height = 8.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'TabItem2'
+    end
+  end
+  object DataGeneratorAdapterContact: TDataGeneratorAdapter
+    FieldDefs = <
+      item
+        Name = 'avatar'
+        FieldType = ftBitmap
+        Generator = 'ContactBitmaps'
+        ReadOnly = False
+      end
+      item
+        Name = 'ContactName'
+        Generator = 'ContactNames'
+        ReadOnly = False
+      end>
+    Active = True
+    AutoPost = False
+    Options = [loptAllowInsert, loptAllowDelete, loptAllowModify]
+    Left = 104
+    Top = 273
+  end
+  object AdapterBindSourceContact: TAdapterBindSource
+    AutoActivate = True
+    OnCreateAdapter = AdapterBindSourceContactCreateAdapter
+    Adapter = DataGeneratorAdapterContact
+    ScopeMappings = <>
+    Left = 88
+    Top = 345
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkFillControlToField1: TLinkFillControlToField
+      Category = 'Quick Bindings'
+      Control = ListViewContacts
+      Track = True
+      FillDataSource = AdapterBindSourceContact
+      FillDisplayFieldName = 'ContactName'
+      AutoFill = True
+      FillExpressions = <
+        item
+          SourceMemberName = 'avatar'
+          ControlMemberName = 'Bitmap'
+        end>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+  end
+end
