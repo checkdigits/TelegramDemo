@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
-    <Transaction>2021/07/14 23:27:18.411,Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\TelegramDelphi.dproj=Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\HeaderFooterApplication.dproj</Transaction>
-    <Transaction>2021/07/14 23:27:30.620,Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\TelegramMain.pas=Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\HeaderFooterTemplate.pas</Transaction>
-    <Transaction>2021/07/14 23:27:30.620,Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\TelegramMain.fmx=Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\HeaderFooterTemplate.fmx</Transaction>
+	<Transactions>
+    <Transaction>2021/07/14 23:27:18.000.411,Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\TelegramDelphi.dproj=Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\HeaderFooterApplication.dproj</Transaction>
+    <Transaction>2021/07/14 23:27:30.000.620,Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\TelegramMain.fmx=Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\HeaderFooterTemplate.fmx</Transaction>
+    <Transaction>2021/07/14 23:27:30.000.620,Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\TelegramMain.pas=Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\HeaderFooterTemplate.pas</Transaction>
+    <Transaction>2021/07/19 13:43:10.775,=Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\Unit1.pas</Transaction>
+    <Transaction>2021/07/19 13:43:22.482,Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\UChatFrame.pas=Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\Unit1.pas</Transaction>
+    <Transaction>2021/07/19 13:43:22.482,Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\UChatFrame.fmx=Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\Unit1.fmx</Transaction>
   </Transactions>
 </BorlandProject>

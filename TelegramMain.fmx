@@ -1,12 +1,13 @@
 object HeaderFooterForm: THeaderFooterForm
   Left = 0
   Top = 0
-  Caption = 'Header Footer Form'
+  Caption = 'Telegram Delphi Client'
   ClientHeight = 567
   ClientWidth = 384
   FormFactor.Width = 1440
   FormFactor.Height = 900
   FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
   DesignerMasterStyle = 0
   object Header: TToolBar
     Size.Width = 384.000000000000000000
@@ -15,12 +16,22 @@ object HeaderFooterForm: THeaderFooterForm
     TabOrder = 0
     object HeaderLabel: TLabel
       Align = Contents
+      StyledSettings = [Family, Size]
       Size.Width = 384.000000000000000000
       Size.Height = 48.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'toollabel'
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claRoyalblue
       TextSettings.HorzAlign = Center
       Text = 'Telegram Delphi Client'
+    end
+    object Button2: TButton
+      Position.X = 16.000000000000000000
+      Position.Y = 16.000000000000000000
+      TabOrder = 0
+      Text = 'Contacts'
+      OnClick = Button2Click
     end
   end
   object Footer: TToolBar
@@ -31,6 +42,16 @@ object HeaderFooterForm: THeaderFooterForm
     Size.PlatformDefault = False
     StyleLookup = 'bottomtoolbar'
     TabOrder = 1
+    object lblStatus: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 209.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'lblStatus'
+      Visible = False
+      TabOrder = 0
+    end
   end
   object TabControl1: TTabControl
     Align = Client
@@ -39,29 +60,36 @@ object HeaderFooterForm: THeaderFooterForm
     Size.PlatformDefault = False
     TabIndex = 0
     TabOrder = 2
-    TabPosition = None
+    TabPosition = Top
     Sizes = (
       384s
-      471s
+      445s
       384s
-      471s)
+      445s
+      384s
+      445s)
     object TabItemContacts: TTabItem
       CustomIcon = <
         item
         end>
       IsSelected = True
-      Size.Width = 8.000000000000000000
-      Size.Height = 8.000000000000000000
+      Size.Width = 109.000000000000000000
+      Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
       TabOrder = 0
       Text = 'TabItemContacts'
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
       object lblHeaderContact: TLabel
         Align = Top
+        StyledSettings = [Family, Size]
         Size.Width = 384.000000000000000000
         Size.Height = 25.000000000000000000
         Size.PlatformDefault = False
-        Text = 'Your Telegram contacts'
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        TextSettings.FontColor = claRoyalblue
+        Text = '  Your Telegram contacts'
         TabOrder = 0
       end
       object ListViewContacts: TListView
@@ -69,37 +97,220 @@ object HeaderFooterForm: THeaderFooterForm
         ItemEditAppearanceClassName = 'TCustomizeItemObjects'
         HeaderAppearanceClassName = 'TListHeaderObjects'
         FooterAppearanceClassName = 'TListHeaderObjects'
+        ItemIndex = 0
         Align = Client
         Size.Width = 384.000000000000000000
-        Size.Height = 446.000000000000000000
+        Size.Height = 420.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
+        ItemAppearanceObjects.ItemObjects.Text.Font.StyleExt = {00070000000200000004000000}
         ItemAppearanceObjects.ItemObjects.Text.Width = 255.000000000000000000
         ItemAppearanceObjects.ItemObjects.Text.Height = 44.000000000000000000
         ItemAppearanceObjects.ItemObjects.Text.PlaceOffset.X = 46.000000000000000000
+        ItemAppearanceObjects.ItemObjects.Detail.Width = 15.000000000000000000
+        ItemAppearanceObjects.ItemObjects.Detail.Visible = True
+        ItemAppearanceObjects.ItemObjects.Detail.Opacity = 0.000000000000000000
         ItemAppearanceObjects.ItemObjects.Image.Visible = True
         ItemAppearanceObjects.ItemObjects.Image.PlaceOffset.X = 8.000000000000000000
+        ItemAppearanceObjects.ItemEditObjects.Text.Width = 225.000000000000000000
+        ItemAppearanceObjects.ItemEditObjects.Text.Height = 44.000000000000000000
+        ItemAppearanceObjects.ItemEditObjects.Text.PlaceOffset.X = 54.000000000000000000
+        ItemAppearanceObjects.ItemEditObjects.Detail.Width = 15.000000000000000000
+        ItemAppearanceObjects.ItemEditObjects.Detail.Height = 44.000000000000000000
+        ItemAppearanceObjects.ItemEditObjects.Detail.Visible = True
+        ItemAppearanceObjects.ItemEditObjects.Detail.PlaceOffset.X = 310.000000000000000000
+        ItemAppearanceObjects.ItemEditObjects.Detail.Opacity = 0.000000000000000000
+        ItemAppearanceObjects.ItemEditObjects.Image.Visible = True
+        ItemAppearanceObjects.ItemEditObjects.Image.PlaceOffset.X = 16.000000000000000000
         StyleLookup = 'ListViewContactsStyle1'
+        OnDblClick = ListViewContactsDblClick
         object RoundRect1: TRoundRect
-          Position.X = 296.000000000000000000
-          Position.Y = 368.000000000000000000
-          Size.Width = 57.000000000000000000
-          Size.Height = 58.000000000000000000
+          Anchors = [akRight, akBottom]
+          Fill.Kind = None
+          Position.X = 280.000000000000000000
+          Position.Y = 334.000000000000000000
+          Size.Width = 81.000000000000000000
+          Size.Height = 81.000000000000000000
           Size.PlatformDefault = False
+          Stroke.Color = claRoyalblue
+          OnClick = RoundRect1Click
+          object IconAddContact: TImage
+            MultiResBitmap.Height = 78
+            MultiResBitmap.Width = 63
+            MultiResBitmap = <
+              item
+                Width = 63
+                Height = 78
+                PNG = {
+                  89504E470D0A1A0A0000000D494844520000003F0000004E08060000009721CE
+                  BB000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+                  078249444154785EED9C796C14551CC77F33B357BBDB2E3D4168A1858280E510
+                  2A9412140C72358A074750FEC1843F082AA73131460322123106FF040D064562
+                  8CA008A89008824095434004448E725FA54077BBBBED1EF37CBFE98FB23DB6DD
+                  CEB10B5D3EC9EEBCDF6FBAF3E6FB66E61DBFF7A602C400C9D989597A0E03734E
+                  21485979203A3240305B818542C0BCB72154791102574E80FFCC9F10BC760A80
+                  B1989C9771990802175C02C9C553C1DC7520DAB4A3654237CF836FFF7AA839BC
+                  0558D06F6821187270537677E698B010CCB9FDC8D3764277AE42F5D64FC1FFDF
+                  1EC30A40F7032715BDC8EC635E03413293471BBE831B9542805040F773D5F180
+                  027370D14943A790AD1FFEF203E0FAF66D607E9FAE0520D25633F6D1B30C118E
+                  58F28B2075CA525E739A19B9744117F1B601E359F2B069641903168063CCEB64
+                  E98366F1525A67E618378F2C63492A7A017893A9DBD5D72CDECEAF86604922CB
+                  781C63E78260D2E7F6D724DED4B90FB3F61A4E566CE0771A7FCC2690A50D4DE2
+                  93864CE6DF8635C311491A32897F0B9AAFBE6AF182D9C6ACBD4790155BA4CC3C
+                  3075EA49967A548B37771B88054056ECB1140CA5947AD48BCF798C52F1C1DC45
+                  7BFEAAC54B19DD28151FA48CAE94528F6AF1382C8D27A2239D7F6BABF4345478
+                  564AC5091C3845394C8E846AF12C14A0549C9043FC4B5B6BA75EBCF70EA5E283
+                  8CF96B8CF8A8161FBC758952F121A443FEEAC55F3E41A9F810BCA23D7FD5E203
+                  E7FEA2E72E3EF8CFECA3947A548BE7CF9CE02F3F48566C915D372070F12859EA
+                  512D1EF11DD840A9D882713D60B2E6119526F1FE537B2178F52459B141F656E9
+                  56E89AC4635353FDCB0ABC0AE4301ECFF695C06AAA7519476B13CF095CFA47F0
+                  EE5D4796B1E09D5673783359DAD12C1EF1FCF6393FB132B28C2158710E5C3F2C
+                  D1DCB1094717F1BCC9135CEBDF55E2EB4610AABC00555FCFE7B7BB5B37E188BE
+                  0793CCCC316101D8069692473B01DE9CBA36BC87159DAEE78AE87E40C45A389A
+                  39C6CC01D1DE813C6D87056AC0BBEB0BF0967DA34BB3D61C861C14116C0E963C
+                  742AD88A9E073139FA4240D135477E06EF9EB5D89931ECFC10430F8E608CDDD2
+                  A3182C05C3C0945B08525A0EFA682F8777914355D7795FFD38F84FEF83DA93BB
+                  80D57A0C3F2F445326527A2EC3589EA96301881D1E015FD93ADEF41D6BF998A2
+                  C4C4A4545A9C1004E673B53A0F2F65E432FBC899207B6E43F0C6693EA83ACEB7
+                  E59A1F8736FFD8D4A917B3F51F0796DE2370C50579092EC6B3631578FFC0E754
+                  9F26C95AF80C4B295D088225993C75604128EDFED16D10387F48557E51FFC09C
+                  3798D99F9A01E6AE03C81319FFE932706F5CAA0C7EC8D566F89DC11C63E780ED
+                  F167C9139960C559F0FEBE066A8FEF685321B4FA87A23D8D39C6CF076B9F91E4
+                  890ED955C13B258BF95539DCE6029032BBB1D497168129BB0779A22370E16F70
+                  6F5E866B7CA2CAB3C53F32E7F663A993DE571FA9E59599079BABDD5F45FD7CDA
+                  FA8FE585BD40F5E427F3FBC0BD6919BF0BB6B79A5FC43FB0F42CE1C217F39A59
+                  7B94167B7E6EDE3595AB2B23E687D35F8E7173F5E92031A62C65F1ED5FDF6201
+                  34BB933FD7CCF9CA275CB8853CDA91AB6FF17A6009F8CFEE6F92A79495C76FF3
+                  C560CACA278F1E3070FFF821F6192217386DEB11533259DACCD5F8AC934747F8
+                  D0173B2F9E9DABF19150F2C6551DB8B8C188397E160CC09D35B331DED76C0134
+                  713AA72D67968262B28C2170E108AF983E82E4E1D3513C798D010745B757CD68
+                  B62FD1C061EDFD244B9DFC01594683130ECD5E10DDF1ECF88C57BA5F36C9ECDE
+                  905610997DD44C3262416C8423C9252FF3B1464A93E99D7AF1D65E25CAA47F7B
+                  44B0DA2169F044B2EE512FDE36A8E9CEF6846DD073BC141ACEEA2AE2F9909359
+                  BA3FA138DA2B121F78E1AAEF7014F1B81C9C8FB614477BC6F268C335448A7873
+                  3BBFEA77697C772B556EFA1BDF31C9D95171DCCFF84FEE06D7F78BC86A1D8C35
+                  38A7AF208BC33B59373F2EAD8FFB8B386A939CD9CABEFB1DC64218E612A2FE04
+                  FDF44B4210311E4106176FCAEACE37B16B73F580DFBE2CF3AD6D113FCEA9CB22
+                  2ED93065A3DE3A44292387920F10BC72C6B140A40FB4B05E484ABFA757141B87
+                  A2DA39E1A137918FE228991884EB15C56427251303214CAF28581D944C0CC430
+                  BDA252412410E17A85F4596B999419DF75B448CDA14D38E14156F384AAAEE1C4
+                  A560292866CE69CBC9DB148C1956AD9D27601F065F6C6C4CCD919FB0D32008E9
+                  B3D731293D97DCF103039C3547B746D5E188563C9911B96FAEFC5DF1184D3275
+                  EE43DEE6C1574DAC7D9F26AB29F83666EDB15FC98A8CD0E1D595CCDCA52F99F1
+                  E3AEF894D2379932F6361C0622AE694B5444E595ED0445C449C54405AFBCA04C
+                  F126204A24C7BD6539309F5B71E80E63CA5213D95D01C18A7265B5344E5A04CE
+                  1D52B6750B0DCE02F37BE907B1A3BE2DC417FE5326BEA3EA7D355CF81FBA7D05
+                  E45B97F8F6B2D2D484AA6E2882E5EACA3A6151CE9BC7B2B66F7842F8AF1EF207
+                  2BEB67A4AC7C10EDE9204826607208D7C9282265F74D905DD715B1759FCBBA2D
+                  0745AC7D47B1C651D6C66024B67130321CB9EA3AD4FEBB93ACC8E876D2B144AF
+                  1E5EFDA44522F2507CA2F2507CA2F2507CA2F2608AC74E17EF3247FA40E369AA
+                  6601F81FE27EEFF6CEBAC9E50000000049454E44AE426082}
+                FileName = 
+                  'Z:\DevPerso\Embarcadero\dev\Telegram\TelegramDemo\Icons\clipart9' +
+                  '83722.png'
+              end>
+            HitTest = False
+            Position.X = 12.000000000000000000
+            Position.Y = 8.000000000000000000
+            Size.Width = 57.000000000000000000
+            Size.Height = 65.000000000000000000
+            Size.PlatformDefault = False
+          end
         end
       end
     end
-    object TabItem2: TTabItem
+    object TabItemAddContact: TTabItem
       CustomIcon = <
         item
         end>
       IsSelected = False
-      Size.Width = 8.000000000000000000
-      Size.Height = 8.000000000000000000
+      Size.Width = 125.000000000000000000
+      Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
       TabOrder = 0
-      Text = 'TabItem2'
+      Text = 'TabItemAddContact'
+      OnClick = TabItemAddContactClick
+      ExplicitSize.cx = 125.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object Rectangle1: TRectangle
+        Align = Top
+        Fill.Color = claWhite
+        Margins.Left = 15.000000000000000000
+        Margins.Top = 15.000000000000000000
+        Margins.Right = 15.000000000000000000
+        Position.X = 15.000000000000000000
+        Position.Y = 15.000000000000000000
+        Size.Width = 354.000000000000000000
+        Size.Height = 138.000000000000000000
+        Size.PlatformDefault = False
+        object lblAddContactInfo: TLabel
+          Align = Top
+          Margins.Top = 10.000000000000000000
+          Position.Y = 10.000000000000000000
+          Size.Width = 354.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Center
+          Text = 'Please enter phone number international format :'
+          TabOrder = 0
+        end
+        object edtPhone: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Bottom
+          TabOrder = 1
+          KeyboardType = DecimalNumberPad
+          TextSettings.Font.Size = 16.000000000000000000
+          Position.X = 90.000000000000000000
+          Position.Y = 47.000000000000000000
+          Margins.Left = 90.000000000000000000
+          Margins.Right = 100.000000000000000000
+          Margins.Bottom = 50.000000000000000000
+          Size.Width = 164.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          StyledSettings = [Family, Style, FontColor]
+          KillFocusByReturn = True
+          OnExit = edtPhoneExit
+        end
+        object lblPlus: TLabel
+          StyledSettings = [Family, Style, FontColor]
+          Position.X = 64.000000000000000000
+          Position.Y = 48.000000000000000000
+          Size.Width = 25.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 30.000000000000000000
+          TextSettings.HorzAlign = Trailing
+          Text = '+'
+          TabOrder = 2
+        end
+      end
+    end
+    object TabDebug: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 74.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'TabDebug'
+      ExplicitSize.cx = 74.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object MemoDebug: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Align = Client
+        Size.Width = 384.000000000000000000
+        Size.Height = 445.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Viewport.Width = 380.000000000000000000
+        Viewport.Height = 441.000000000000000000
+      end
     end
   end
   object DataGeneratorAdapterContact: TDataGeneratorAdapter
@@ -114,40 +325,61 @@ object HeaderFooterForm: THeaderFooterForm
         Name = 'ContactName'
         Generator = 'ContactNames'
         ReadOnly = False
+      end
+      item
+        Name = 'UserIDstr'
+        ReadOnly = False
       end>
     Active = True
     AutoPost = False
     Options = [loptAllowInsert, loptAllowDelete, loptAllowModify]
-    Left = 104
-    Top = 273
-  end
-  object AdapterBindSourceContact: TAdapterBindSource
-    AutoActivate = True
-    OnCreateAdapter = AdapterBindSourceContactCreateAdapter
-    Adapter = DataGeneratorAdapterContact
-    ScopeMappings = <>
-    Left = 88
-    Top = 345
+    Left = 40
+    Top = 473
   end
   object BindingsList1: TBindingsList
     Methods = <>
     OutputConverters = <>
-    Left = 20
-    Top = 5
-    object LinkFillControlToField1: TLinkFillControlToField
-      Category = 'Quick Bindings'
+    Left = 148
+    Top = 421
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Liaisons rapides'
+      DataSource = AGeneratorAdapterContact
+      FieldName = 'ContactName'
       Control = ListViewContacts
-      Track = True
-      FillDataSource = AdapterBindSourceContact
-      FillDisplayFieldName = 'ContactName'
-      AutoFill = True
       FillExpressions = <
         item
           SourceMemberName = 'avatar'
           ControlMemberName = 'Bitmap'
+        end
+        item
+          SourceMemberName = 'UserIDstr'
+          ControlMemberName = 'Detail'
         end>
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
+  end
+  object sgcTelegram: TsgcTDLib_Telegram
+    OnAuthorizationStatus = sgcTelegramAuthorizationStatus
+    OnAuthenticationCode = sgcTelegramAuthenticationCode
+    OnMessageText = sgcTelegramMessageText
+    OnNewChat = sgcTelegramNewChat
+    OnEvent = sgcTelegramEvent
+    OnException = sgcTelegramException
+    Telegram.Parameters.ApplicationVersion = '1.0'
+    Telegram.Parameters.DeviceModel = 'Desktop'
+    Telegram.Parameters.LanguageCode = 'en'
+    Telegram.Parameters.SystemVersion = 'Windows'
+    Telegram.ErrorsLevel = tvbErrors
+    Left = 320
+    Top = 16
+  end
+  object AGeneratorAdapterContact: TAdapterBindSource
+    AutoActivate = True
+    OnCreateAdapter = AGeneratorAdapterContactCreateAdapter
+    Adapter = DataGeneratorAdapterContact
+    ScopeMappings = <>
+    Left = 216
+    Top = 451
   end
 end

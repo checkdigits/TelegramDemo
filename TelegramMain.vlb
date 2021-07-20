@@ -8,8 +8,8 @@ Coordinates=317,10,76,51
 Coordinates=306,254,46,33
 
 [DataGeneratorAdapterContact]
+Coordinates=1033,110,163,33
 Visible=False
-Coordinates=314,199,163,33
 
 [lblHeaderContact]
 Coordinates=415,10,99,51
@@ -17,22 +17,52 @@ Coordinates=415,10,99,51
 [TabItemContacts]
 Coordinates=184,254,97,33
 
-[TabItem2]
-Coordinates=105,254,59,33
-
 [TabControl1]
 Coordinates=10,254,74,33
-
-[AdapterBindSourceContact]
-Coordinates=133,10,149,105
 
 [ListViewContacts]
 Coordinates=580,10,100,195
 Visible=True
 
 []
-Coordinates=234,273,91,36
+Coordinates=345,87,49,51
 
 [BindingsList1]
 Coordinates=142,153,82,33
+
+[IconAddContact]
+Coordinates=0,0,93,51
+
+[RoundRect1]
+Coordinates=44,77,74,33
+
+[lblAddContactInfo]
+Coordinates=23,172,103,51
+
+[sgcTelegram]
+Coordinates=712,369,77,33
+
+[lblPlus]
+Coordinates=511,273,48,51
+
+[TabItemAddContact]
+Coordinates=573,369,112,33
+
+[lblStatus]
+Coordinates=442,273,57,51
+
+[TabDebug]
+Coordinates=494,369,64,33
+
+[Rectangle1]
+Coordinates=405,369,69,33
+
+[MemoDebug]
+Coordinates=731,309,76,51
+
+[edtPhone]
+Coordinates=731,1,61,51
+
+[AGeneratorAdapterContact]
+Coordinates=1033,110,148,123
 

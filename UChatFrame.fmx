@@ -1,0 +1,46 @@
+object ChatFrame: TChatFrame
+  Align = Client
+  Size.Width = 434.000000000000000000
+  Size.Height = 393.000000000000000000
+  Size.PlatformDefault = False
+  object VertScrollBox1: TVertScrollBox
+    Align = Client
+    Size.Width = 434.000000000000000000
+    Size.Height = 319.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Viewport.Width = 434.000000000000000000
+    Viewport.Height = 319.000000000000000000
+  end
+  object Rectangle1: TRectangle
+    Align = Bottom
+    Fill.Color = claWhitesmoke
+    Position.Y = 344.000000000000000000
+    Size.Width = 434.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    object edtSendMessage: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Client
+      TabOrder = 0
+      Margins.Left = 20.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 50.000000000000000000
+      Margins.Bottom = 10.000000000000000000
+      Size.Width = 364.000000000000000000
+      Size.Height = 29.000000000000000000
+      Size.PlatformDefault = False
+      KillFocusByReturn = True
+      OnExit = edtSendMessageExit
+    end
+  end
+  object lblChatTitle: TLabel
+    Align = Top
+    Size.Width = 434.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.HorzAlign = Center
+    Text = 'lblChatTitle'
+    TabOrder = 2
+  end
+end

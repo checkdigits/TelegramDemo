@@ -3,7 +3,8 @@ program TelegramDelphi;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  TelegramMain in 'TelegramMain.pas' {HeaderFooterForm};
+  TelegramMain in 'TelegramMain.pas' {HeaderFooterForm},
+  UChatFrame in 'UChatFrame.pas' {ChatFrame: TFrame};
 
 {$R *.res}
 
